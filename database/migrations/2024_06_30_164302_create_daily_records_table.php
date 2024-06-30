@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->uuid('uuid')->primary();
-            $table->jsonb('Name');
-            $table->string('Gender');
-            $table->jsonb('Location');
-            $table->integer('age');
+        Schema::create('daily_records', function (Blueprint $table) {
+            $table->date('date')->primary();
+            $table->integer('male_count');
+            $table->integer('female_count');
+            $table->decimal('male_avg_age', 5, 2);
+            $table->decimal('female_avg_age', 5, 2);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('daily_records');
     }
 };
