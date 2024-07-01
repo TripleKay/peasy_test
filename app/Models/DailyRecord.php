@@ -16,19 +16,19 @@ class DailyRecord extends Model
     // protected $keyType      = 'string';
 
     protected $fillable = [
-        date,
-        male_count,
-        female_count,
-        male_avg_age,
-        female_avg_age,
+        'date',
+        'male_count',
+        'female_count',
+        'male_avg_age',
+        'female_avg_age',
     ];
 
     protected $casts = [
-        date           => 'date',
-        male_count     => 'integer',
-        female_count   => 'integer',
-        male_avg_age   => 'decimal',
-        female_avg_age => 'decimal',
+        'date'           => 'date',
+        'male_count'     => 'integer',
+        'female_count'   => 'integer',
+        'male_avg_age'   => 'decimal',
+        'female_avg_age' => 'decimal',
     ];
 
 }

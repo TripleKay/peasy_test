@@ -40,6 +40,11 @@ class UserService implements UserServiceInterface
         return $this->repository->sync($data,$user);
     }
 
+    public function getAverageAges(): array
+    {
+        return $this->repository->getAverageAges();
+    }
+
     public function destroy(Model $user): Bool
     {
         return $this->repository->destroy($user);

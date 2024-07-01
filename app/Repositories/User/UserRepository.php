@@ -46,6 +46,15 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         }
     }
 
+    public function getAverageAges(): array
+    {
+        return [
+            'male_avg_age'   => $this->model->where('gender', 'male')->avg('age'),
+            'female_avg_age' => $this->model->where('gender', 'female')->avg('age'),
+        ];
+
+    }
+
     public function destroy(Model $user): Bool
     {
         return $user->delete();

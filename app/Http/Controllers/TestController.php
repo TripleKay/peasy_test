@@ -4,20 +4,37 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Listeners\DecreaseRedisGenderCount;
 use App\Services\User\UserServiceInterface;
 use App\Repositories\User\UserRepositoryInterface;
+use App\Services\DailyRecord\DailyRecordServiceInterface;
+use App\Repositories\DailyRecord\DailyRecordRepositoryInterface;
 
 class TestController extends Controller
 {
     protected $service, $repository;
 
-    public function __construct(UserServiceInterface $service, UserRepositoryInterface $repository)
+    // public function __construct(UserServiceInterface $service, UserRepositoryInterface $repository)
+    // {
+    //     $this->service = $service;
+    //     $this->repository = $repository;
+    // }
+
+    // public function __construct(DailyRecordRepositoryInterface $repository)
+    // {
+    //     // $this->service = $service;
+    //     $this->repository = $repository;
+
+    // }
+    public function __construct(DailyRecordServiceInterface $service)
     {
         $this->service = $service;
-        $this->repository = $repository;
+
     }
 
     public function test(){
+
+        return $this->service->getAll();
 
         // return User::create([
         //     'uuid' => 'sdfsdfsdfsdfs',

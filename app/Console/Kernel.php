@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Jobs\FetchRandomUsersJob;
+use App\Jobs\StoreDailyRecordJob;
 use App\Services\User\UserServiceInterface;
 use Illuminate\Console\Scheduling\Schedule;
 use App\Integrations\RandomUser\RandomUserService;
@@ -20,6 +21,8 @@ class Kernel extends ConsoleKernel
         $schedule->job(new FetchRandomUsersJob(
             app(RandomUserService::class),
             app(UserServiceInterface::class)))->everySecond();
+
+        $schedule->job(new StoreDailyRecordJob())->everyMinute();
     }
 
     /**

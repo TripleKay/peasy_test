@@ -3,9 +3,13 @@
 namespace App\Providers;
 
 use App\Models\User;
-use App\Observers\UserObserver;
+use App\Events\User\UserCreated;
+use App\Events\User\UserDeleted;
+use App\Events\User\UserUpdated;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
+use App\Listeners\UpdateRedisGenderCount;
+use App\Listeners\IncreaseRedisGenderCount;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -20,6 +24,15 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        UserCreated::class => [
+            IncreaseRedisGenderCount::class,
+        ],
+        UserUpdated::class => [
+            UpdateRedisGenderCount::class,
+        ],
+        UserDeleted::class => [
+            HandleUserDeletion::class, ## combination class
+        ],
     ];
 
     /**
@@ -27,7 +40,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        User::observe(UserObserver::class);
+
     }
 
     /**

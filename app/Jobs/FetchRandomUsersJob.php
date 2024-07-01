@@ -40,8 +40,6 @@ class FetchRandomUsersJob implements ShouldQueue
         $this->randomUserService = $randomUserService;
         $this->userService       = $userService;
 
-        Log::info('i m job baby');
-
         $users = $this->randomUserService->fetchUsers();
 
         $users = $this->randomUserService->formatUsers($users);
