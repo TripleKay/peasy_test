@@ -3,24 +3,31 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
     use SoftDeletes;
 
+    protected $primaryKey   = 'id';
+    // public    $incrementing = false;
+    // protected $keyType      = 'string';
+
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    * The attributes that are mass assignable.
+    *
+    * @var array<int, string>
+    */
+
     protected $fillable = [
+        'uuid',
         'name',
         'gender',
         'location',
@@ -32,9 +39,9 @@ class User extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'name'     => 'jsonb',
-        'gender'   => 'string',
-        'location' => 'jsonb',
-        'age'      => 'integer',
+        'name'     => 'array', // Cast JSONB to an array
+        'location' => 'array', // Cast JSONB to an array
     ];
+
+
 }

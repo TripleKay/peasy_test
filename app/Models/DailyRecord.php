@@ -11,6 +11,10 @@ class DailyRecord extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $primaryKey   = 'id';
+    // public    $incrementing = false;
+    // protected $keyType      = 'string';
+
     protected $fillable = [
         date,
         male_count,

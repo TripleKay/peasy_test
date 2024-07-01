@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('daily_records', function (Blueprint $table) {
-            $table->date('date')->primary();
+            $table->id();
+            $table->date('date');
             $table->integer('male_count');
             $table->integer('female_count');
             $table->decimal('male_avg_age', 5, 2);

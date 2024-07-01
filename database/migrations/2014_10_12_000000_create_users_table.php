@@ -12,10 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->uuid('uuid')->primary();
-            $table->jsonb('Name');
-            $table->string('Gender');
-            $table->jsonb('Location');
+            $table->id();
+            // $table->uuid('id')->primary();
+            $table->string('uuid')->unique();
+            $table->jsonb('name');
+            $table->string('gender');
+            $table->jsonb('location');
             $table->integer('age');
             $table->timestamps();
             $table->softDeletes();
