@@ -17,14 +17,12 @@ class FetchRandomUsersJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private $randomUserService;
-    private $userService;
+    private RandomUserService $randomUserService;
+    private UserServiceInterface $userService;
 
     /**
      * Create a new job instance.
      *
-     * @param  RandomUserService  $randomUserService
-     * @param  UserServiceInterface  $userService
      * @return void
      */
     public function __construct()

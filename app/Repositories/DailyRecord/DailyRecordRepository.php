@@ -29,7 +29,7 @@ class DailyRecordRepository extends BaseRepository implements DailyRecordReposit
 
     public function update(array $data, Model $dailyRecord): Model
     {
-        return tap(($dailyRecord), fn () => $event->fill($data)->update());
+        return tap(($dailyRecord), fn () => $this->model->fill($data)->update());
     }
 
     public function first(string $column,$value) : Model | null

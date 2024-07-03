@@ -20,7 +20,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
     public function getAll(array $filter,int $limit): LengthAwarePaginator
     {
-        return $this->model->query()->filter($filter)->paginate($limit);
+        return $this->model->newQuery()->filter($filter)->paginate($limit);
     }
 
     public function store(array $data): Model
@@ -30,7 +30,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
     public function update(array $data, Model $user): Model
     {
-        return tap(($user), fn () => $event->fill($data)->update());
+        return tap(($user), fn () => $this->model->fill($data)->update());
     }
 
     public function first(string $column,$value) : Model | null

@@ -18,6 +18,11 @@ class RandomUserService implements RandomUserServiceInterface
         $this->init();
     }
 
+    /**
+    * Fetch users from the API.
+    *
+    * @return array<int, array<string, mixed>> Array of users with their details.
+    */
     public function fetchUsers(): array
     {
         Log::info('limit '.$this->limit);
@@ -30,15 +35,21 @@ class RandomUserService implements RandomUserServiceInterface
         return [];
     }
 
+    /**
+     * Format users into a collection.
+     *
+     * @param array<int, array<string, mixed>> $users Array of users with their details.
+     * @return Collection<int, array{uuid: string, gender: string, name: string, location: string, age: int}> Collection of formatted users.
+     */
     public function formatUsers(array $users) : Collection
     {
         return collect($users)->map(function($item){
             return [
-                'uuid'     => $item['login']['uuid'],
-                'gender'   => $item['gender'],
-                'name'     => json_encode($item['name']),
-                'location' => json_encode($item['location']),
-                'age'      => $item['dob']['age'],
+                'uuid'     => (string)$item['login']['uuid'],
+                'gender'   => (string)$item['gender'],
+                'name'     => (string)json_encode($item['name']),
+                'location' => (string)json_encode($item['location']),
+                'age'      => (int)$item['dob']['age'],
             ];
         });
     }

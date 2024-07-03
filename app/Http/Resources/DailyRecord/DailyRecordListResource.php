@@ -5,6 +5,16 @@ namespace App\Http\Resources\DailyRecord;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+
+/**
+ * @property int $id
+ * @property string $date
+ * @property int $male_count
+ * @property int $female_count
+ * @property decimal $male_avg_age
+ * @property decimal $female_avg_age
+ */
+
 class DailyRecordListResource extends JsonResource
 {
     /**

@@ -10,7 +10,7 @@ use App\Http\Resources\DailyRecord\DailyRecordListResource;
 
 class DailyRecordController extends Controller
 {
-    protected $service;
+    protected DailyRecordServiceInterface $service;
 
     public function __construct(DailyRecordServiceInterface $service)
     {

@@ -9,8 +9,8 @@ use App\Services\DailyRecord\DailyRecordServiceInterface;
 
 class HandleUserDeletion
 {
-    protected $redisGenderService;
-    protected $dailyRecordService;
+    protected RedisGenderService $redisGenderService;
+    protected DailyRecordServiceInterface $dailyRecordService;
 
     /**
      * Create the event listener.
@@ -30,7 +30,7 @@ class HandleUserDeletion
         $this->redisGenderService->decrease($event->user);
 
         ## To Update Daily Record
-        $dailyRecord = $this->dailyRecordService->first('date', $user->created_at);
+        $dailyRecord = $this->dailyRecordService->first('date', $event->user->created_at);
         $this->dailyRecordService->update(null,$dailyRecord);
     }
 }

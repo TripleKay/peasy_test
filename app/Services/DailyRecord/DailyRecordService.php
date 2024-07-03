@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\DailyRecord;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use App\Services\Redis\RedisGenderService;
 use App\Services\User\UserServiceInterface;
@@ -63,7 +64,7 @@ class DailyRecordService implements DailyRecordServiceInterface
         return $this->repository->update($data,$dailyRecord);
     }
 
-    public function updateByUser(Model $user) : Model
+    public function updateByUser(User $user) : Model
     {
         $dailyRecord = $this->repository->first('date', $user->created_at);
 

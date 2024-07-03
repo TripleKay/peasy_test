@@ -15,7 +15,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserController extends Controller
 {
-    protected $service;
+    protected UserServiceInterface $service;
 
     public function __construct(UserServiceInterface $service)
     {

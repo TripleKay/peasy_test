@@ -4,6 +4,7 @@ namespace App\Http\Responses;
 
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
 
 class ModelUpdatedResponse implements Responsable
@@ -16,12 +17,12 @@ class ModelUpdatedResponse implements Responsable
         $this->model = $model;
     }
 
-    public function status()
+    public function status() : int
     {
         return 200;
     }
 
-    public function toResponse($request)
+    public function toResponse($request) : JsonResponse
     {
         return response()->json([
             'success' => true,

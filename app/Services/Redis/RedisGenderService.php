@@ -4,27 +4,28 @@ declare(strict_types=1);
 
 namespace App\Services\Redis;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Database\Eloquent\Model;
 
 
 class RedisGenderService
 {
-    public function increase(Model $user)
+    public function increase(User $user)
     {
         $key = $user->gender === 'male' ? 'male_count' : 'female_count';
 
         return Redis::incr($key);
     }
 
-    public function decrease(Model $user)
+    public function decrease(User $user)
     {
         $key = $user->gender === 'male' ? 'male_count' : 'female_count';
 
         return Redis::decr($key);
     }
 
-    public function update(Model $user) : void
+    public function update(User $user) : void
     {
         if ($user->isDirty('gender')) {
             $originalGender = $user->getOriginal('gender');
