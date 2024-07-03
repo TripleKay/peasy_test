@@ -24,7 +24,7 @@ class UserListRequest extends FormRequest
         return [
             'search' => 'nullable|string',
             'gender' => 'nullable|string|in:male,female',
-            'limit'  => 'nullabble|integer|min:0'
+            'limit'  => 'nullable|integer|min:0'
         ];
     }
 }

@@ -18,9 +18,9 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
-        $schedule->job(new FetchRandomUsersJob())->everySecond();
+        $schedule->job(new FetchRandomUsersJob())->everyMinute();
 
-        $schedule->job(new StoreDailyRecordJob())->everyMinute();
+        $schedule->job(new StoreDailyRecordJob())->everyTwoHours();
     }
 
     /**
