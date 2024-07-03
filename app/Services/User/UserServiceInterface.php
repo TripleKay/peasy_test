@@ -6,11 +6,12 @@ namespace App\Services\User;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 interface UserServiceInterface
 {
 
-    public function getAll(): Collection;
+    public function getAll(array $filter,int $limit): LengthAwarePaginator;
 
     public function store(array $data): Model;
 

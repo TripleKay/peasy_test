@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Traits\Filterable;
 use Illuminate\Support\Str;
 use App\Events\User\UserCreated;
 use App\Events\User\UserDeleted;
@@ -19,6 +20,7 @@ class User extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
     use SoftDeletes;
+    use Filterable;
 
     protected $primaryKey   = 'id';
     // public    $incrementing = false;

@@ -77,16 +77,5 @@ class DailyRecordService implements DailyRecordServiceInterface
 
     }
 
-    public function sync(array $data): Model
-    {
-        $dailyRecord = $this->repository->first('uuid',$data['uuid']);
-
-        return $this->repository->sync($data,$dailyRecord);
-    }
-
-    public function destroy(Model $dailyRecord): Bool
-    {
-        return $this->repository->destroy($dailyRecord);
-    }
 
 }

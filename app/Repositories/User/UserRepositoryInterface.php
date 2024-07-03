@@ -6,12 +6,13 @@ namespace App\Repositories\User;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 interface UserRepositoryInterface
 {
     public function model(): String;
 
-    public function getAll(): Collection;
+    public function getAll(array $filter,int $limit): LengthAwarePaginator;
 
     public function store(array $data): Model;
 

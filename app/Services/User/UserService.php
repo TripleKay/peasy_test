@@ -6,6 +6,7 @@ namespace App\Services\User;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Repositories\User\UserRepositoryInterface;
 
 class UserService implements UserServiceInterface
@@ -18,9 +19,9 @@ class UserService implements UserServiceInterface
         $this->repository = $repository;
     }
 
-    public function getAll(): Collection
+    public function getAll(array $filter,int $limit): LengthAwarePaginator
     {
-        return $this->repository->getAll();
+        return $this->repository->getAll($filter,$limit);
     }
 
     public function store(array $data): Model

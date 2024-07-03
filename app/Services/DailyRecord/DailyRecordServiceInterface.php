@@ -16,10 +16,7 @@ interface DailyRecordServiceInterface
 
     public function update(array | null $data, Model $dailyRecord): Model;
 
-    public function sync(array $data): Model;
-
     public function first(string $column,$value) : Model | null;
 
-    public function destroy(Model $dailyRecord): Bool;
 
 }

@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Repositories\User\UserRepositoryInterface;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface
@@ -17,9 +18,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         return User::class;
     }
 
-    public function getAll(): Collection
+    public function getAll(array $filter,int $limit): LengthAwarePaginator
     {
-        return $this->model->get();
+        return $this->model->query()->filter($filter)->paginate($limit);
     }
 
     public function store(array $data): Model

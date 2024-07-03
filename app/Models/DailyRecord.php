@@ -24,11 +24,11 @@ class DailyRecord extends Model
     ];
 
     protected $casts = [
-        'date'           => 'date',
-        'male_count'     => 'integer',
-        'female_count'   => 'integer',
-        'male_avg_age'   => 'decimal',
-        'female_avg_age' => 'decimal',
+        // 'date'           => 'date',
+        // 'male_count'     => 'integer',
+        // 'female_count'   => 'integer',
+        // 'male_avg_age'   => 'decimal',
+        // 'female_avg_age' => 'decimal',
     ];
 
 }
