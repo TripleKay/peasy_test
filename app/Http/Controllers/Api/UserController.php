@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\User\UserListRequest;
 use App\Pipelines\Filters\User\Gender;
 use App\Pipelines\Filters\User\Search;
 use App\Services\User\UserServiceInterface;
@@ -21,13 +22,13 @@ class UserController extends Controller
         $this->service    = $service;
     }
 
-    public function index(Request $request): JsonResource
+    public function index(UserListRequest $request): JsonResource
     {
 
         $data = $this->service->getAll([
             new Search($request->search),
             new Gender($request->gender)
-        ],$request->limit);
+        ],$request->limit ?? 10);
 
         return UserListResource::collection($data);
 

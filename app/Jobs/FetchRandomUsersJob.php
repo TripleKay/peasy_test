@@ -44,7 +44,6 @@ class FetchRandomUsersJob implements ShouldQueue
 
         $users = $this->randomUserService->formatUsers($users);
 
-
         collect($users)->map(function($item){
 
             $this->userService->sync($item);
