@@ -20,7 +20,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->job(new FetchRandomUsersJob())->everySecond();
 
-        $schedule->job(new StoreDailyRecordJob())->everyMinute();
+        $schedule->job(new StoreDailyRecordJob())->daily();
     }
 
     /**
