@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Casts\JsonCast;
 use App\Traits\Filterable;
 use Illuminate\Support\Str;
 use App\Events\User\UserCreated;
@@ -45,10 +46,9 @@ class User extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'name'     => 'array', // Cast JSONB to an array
-        'location' => 'array', // Cast JSONB to an array
+        'name'     => JsonCast::class, 
+        'location' => JsonCast::class,
     ];
-
 
     protected static function boot()
     {

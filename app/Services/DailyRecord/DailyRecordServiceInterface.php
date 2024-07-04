@@ -18,5 +18,4 @@ interface DailyRecordServiceInterface
 
     public function first(string $column,$value) : Model | null;
 
-
 }
