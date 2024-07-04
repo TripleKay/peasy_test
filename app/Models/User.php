@@ -46,26 +46,9 @@ class User extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'name'     => JsonCast::class, 
+        'name'     => JsonCast::class,
         'location' => JsonCast::class,
     ];
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::created(function ($user) {
-            event(new UserCreated($user));
-        });
-
-        static::deleted(function ($user) {
-            event(new UserDeleted($user));
-        });
-
-        static::updated(function ($user) {
-            event(new UserUpdated($user));
-        });
-    }
 
 
 }

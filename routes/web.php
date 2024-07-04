@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\DailyRecordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
