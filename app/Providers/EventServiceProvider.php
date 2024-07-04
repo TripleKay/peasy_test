@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Events\User\UserCreated;
 use App\Events\User\UserDeleted;
 use App\Events\User\UserUpdated;
+use App\Listeners\HandleUserDeletion;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use App\Listeners\UpdateRedisGenderCount;

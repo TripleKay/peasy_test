@@ -30,7 +30,8 @@ class HandleUserDeletion
         $this->redisGenderService->decrease($event->user);
 
         ## To Update Daily Record
-        $dailyRecord = $this->dailyRecordService->first('date', $user->created_at);
-        $this->dailyRecordService->update(null,$dailyRecord);
+        $dailyRecord = $this->dailyRecordService->first('date', $event->user->created_at);
+
+        if($dailyRecord) $this->dailyRecordService->update(null,$dailyRecord);
     }
 }

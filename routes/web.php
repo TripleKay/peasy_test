@@ -14,7 +14,7 @@ use App\Http\Controllers\Backend\DailyRecordController;
 |
 */
 
-Route::get('/', [UserController::class, 'index']);
+Route::get('/', [UserController::class, 'index'])->name('users.index');
 
 Route::get('daily-records', [DailyRecordController::class, 'index']);
 
